@@ -4,7 +4,7 @@
 
 In this benchmarking study, we analyze the performance of three classical simulation methods, that is state vector simulation, tensor network, and Pauli propagation, against quantum computation on real hardware. As testbed, we consider three distinct spin models: the transverse-field Ising model, the XXX random-bond model, and the Kitaev model with an external field. Below, we introduce these model and their Hamiltonians, including the interactions and topologies they define. We show a schematic of the models considered in the figure below.
 
-
+![alt text](schematic_models.png?raw=true)
 
 ### Transverse-field Ising model
 The transverse-field Ising model (TFIM) is one of the fundamental models in quantum many-body physics and serves as a paradigm for quantum phase transitions. The model is described by the Hamiltonian
