@@ -33,7 +33,7 @@ Here, the summations $\langle i,j \rangle_{k}$ run over nearest neighbors along 
 
 ### Kitaev results
 
-![alt text](plots/schematic_models.png?raw=true)
+![alt text](plots/kitaev_results.png?raw=true)
 
 We now benchmark the classical simulation methods against quantum simulation for the three models previously discussed: transverse-field Ising, XXX random-bond and honeycomb Kitaev model with external field. For each simulation method, the task is to start with an initial state, perform time evolution of a Hamiltonian before evaluating the expectation value of some observable. To specify, we have a Hamiltonian $\hat{H} = \sum_i c_i \hat{h}_i$, and we wish to calculate $\langle \hat{O} \rangle = \langle \psi|\hat{O}|\psi\rangle$, where
 
@@ -41,3 +41,8 @@ We now benchmark the classical simulation methods against quantum simulation for
 |\psi\rangle = \left(\prod_i e^{-i\Delta_t c_i \hat{h}_i}\right)^r|\psi_0\rangle
 ```
 Here, $|\psi_0\rangle$ is the initial state, $\Delta_t$ is some timestep and $r$ is the number of trotter steps. It is important to note that for the Ising we are performing a first-order Trotter-type evolution; in other words, in each Trotter step we perform all the $ZZ$ rotations before applying the $X$ rotations. Similarly, for the Kitaev model we perform all $XX$ rotations, followed by $YY$ then finally the $ZZ$ and $Z$ rotations. This contrasts with the random XXX model, where we perform each two-body evolution based on the lexicographic ordering of the lattice bonds, rather than grouping the rotations into sets of $XX$, $YY$ and $ZZ$. For example, the randomisation may make enforce us to perform a $ZZ$ rotation on qubits (1,2) followed by a $YY$ rotation on qubits (1,5) followed by a $XX$ rotation on qubits (2,3), etc.
+
+### Kitaev resources
+
+![alt text](plots/kitaev_resources.png?raw=true)
+
