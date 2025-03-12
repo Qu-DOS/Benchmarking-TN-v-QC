@@ -42,7 +42,15 @@ We now benchmark the classical simulation methods against quantum simulation for
 ```
 Here, $|\psi_0\rangle$ is the initial state, $\Delta_t$ is some timestep and $r$ is the number of trotter steps. It is important to note that for the Ising we are performing a first-order Trotter-type evolution; in other words, in each Trotter step we perform all the $ZZ$ rotations before applying the $X$ rotations. Similarly, for the Kitaev model we perform all $XX$ rotations, followed by $YY$ then finally the $ZZ$ and $Z$ rotations. This contrasts with the random XXX model, where we perform each two-body evolution based on the lexicographic ordering of the lattice bonds, rather than grouping the rotations into sets of $XX$, $YY$ and $ZZ$. For example, the randomisation may make enforce us to perform a $ZZ$ rotation on qubits (1,2) followed by a $YY$ rotation on qubits (1,5) followed by a $XX$ rotation on qubits (2,3), etc.
 
+For the Kitaev Hamiltonian, we define the model on a ladder of 5 plaquettes (22 sites), with $J=1$, $hz=0.001$ and $\Delta_t=0.1$. For the Kitaev simulations we measure the total magnetisation (normalised), the nearest neighbour, the furthest neighbour correlator, and the sum of correlators on every bond (also normalised).
+
+For each model, we compare statevector simulation with finite shots, Pauli Propagation at different minimum coefficient thresholds, tensor networks at different bond dimensions and quantum hardware implementations. Our results are shown in the figure above.
+
 ### Kitaev resources
 
 ![alt text](plots/kitaev_resources.png?raw=true)
+
+As a further comparison, we record the resources (time and memory) used for the different simulation methods, and these results are shown in the above figure. Focusing on Pauli Propagation, we generally see an exponential increase in both time and memory as the number of Trotter steps increases. Increasing the depth of the evolution circuit increases the number of Pauli strings created within the Heisenberg evolution of the observable, resulting in a propagation taking increasing spatial and temporal resources. 
+
+For the given system size, the Kitaev model was simulable with Pauli propagation with the default minimum coefficient threshold $10^{-10}$, but the memory estimates at a large number of Trotter steps (over 10 GB) suggests that the limit for near-exact Pauli Propagation simulation may have been reached. Indeed, for the Kitaev model with an extra plaquette (28 sites), using the default $10^{-10}$ threshold also gives rise to an "out of memory" error.
 
